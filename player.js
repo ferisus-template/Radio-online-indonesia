@@ -14,6 +14,18 @@ const radios = [
   {
     name: "UTAMA FM, LAMPUNG TENGAH",
     url: "https://c1.alhastream.com:3230/suwarautamafm"
+  },
+    {
+    name: "DIVA RADIO, LAMPUNG TIMUR",
+    url: "https://a3.alhastream.com:1285/divaradio"
+  },
+   {
+    name: "BRILIAN RADIO, BANDAR LAMPUNG",
+    url: "https://b.alhastream.com:5009/radio"
+  },
+    {
+    name: "SLENDRO FM, BANDAR JAYA",
+    url: "https://asv.alhastream.com:1290/slendrofm"
   }
 ];
 
