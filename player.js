@@ -1,6 +1,6 @@
 const radios = [
   {
-    name: "Mempuni FM",
+    name: "Mumpuni FM",
     url: "https://b.alhastream.com:5006/radio"
   },
   {
