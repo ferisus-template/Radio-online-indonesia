@@ -26,6 +26,10 @@ const radios = [
     {
     name: "SLENDRO FM, BANDAR JAYA",
     url: "https://asv.alhastream.com:1290/slendrofm"
+  },
+  {
+    name: "Prambors FM",
+      url:"https://s1.cloudmu.id/listen/prambors_makassar/radio.mp3"
   }
 ];
 
