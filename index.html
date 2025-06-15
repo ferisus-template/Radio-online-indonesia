@@ -2,47 +2,57 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Radio Player</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+  <title>Radio Streaming Responsif</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
-      padding: 20px;
-      background-color: #f6f6f6;
+      padding: 16px;
+      background-color: #f9f9f9;
     }
 
     #playerContainer {
       display: none;
-      background: #ffffff;
+      background-color: #ffffff;
       border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       text-align: center;
+      max-width: 100%;
     }
 
     #playerTitle {
-      font-size: 18px;
+      font-size: 1.1rem;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+    }
+
+    .liveIndicator {
+      color: red;
+      margin-bottom: 12px;
+      font-weight: 600;
     }
 
     #playerControls {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .playBtn {
-      font-size: 24px;
-      padding: 10px 20px;
+      font-size: 1.3rem;
+      padding: 8px 20px;
       border: none;
-      border-radius: 50px;
+      border-radius: 25px;
       background-color: #007bff;
       color: white;
       cursor: pointer;
@@ -53,30 +63,39 @@
       background-color: #0056b3;
     }
 
-    .liveIndicator {
-      color: red;
-      font-weight: bold;
-    }
-
     .radio-name {
       background-color: white;
       padding: 12px;
       margin: 8px auto;
       border-radius: 10px;
-      max-width: 600px;
       cursor: pointer;
-      transition: background-color 0.3s;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      transition: background 0.3s;
+      max-width: 600px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      font-size: 1rem;
+      text-align: center;
     }
 
     .radio-name:hover {
-      background-color: #eeeeee;
+      background-color: #f0f0f0;
+    }
+
+    @media (max-width: 600px) {
+      .playBtn {
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px;
+      }
+
+      #playerTitle {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Modern Player UI -->
+  <!-- Player Container -->
   <div id="playerContainer">
     <div id="playerTitle">🎧 Sedang Memutar</div>
     <div class="liveIndicator" id="liveStatus">🔴 LIVE</div>
@@ -85,7 +104,7 @@
     </div>
   </div>
 
-  <!-- Radio List -->
+  <!-- Daftar Radio -->
   <div id="radioContainer"></div>
 
   <script>
