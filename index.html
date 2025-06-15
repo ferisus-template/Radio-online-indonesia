@@ -2,246 +2,90 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Radio Streaming - RadioPlayer</title>
+  <title>Radio Streaming</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-
-  body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #001f3f, #003366);
-  color: #eee;
-  margin: 0;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-h1 {
-  font-family: 'Orbitron', monospace;
-  text-align: center;
-  margin-bottom: 30px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: #00bfff;  /* biru terang */
-  text-shadow: 0 0 10px #00bfff;
-}
-
-.radio-card {
-  background: #002244;
-  border-radius: 20px;
-  padding: 25px 20px;
-  box-shadow: 0 0 20px #0099ff66;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.radio-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px #00aaffcc;
-  cursor: pointer;
-}
-
-.radio-name {
-  font-family: 'Orbitron', monospace;
-  font-weight: 700;
-  font-size: 20px;
-  margin-bottom: 12px;
-  letter-spacing: 1.5px;
-  color: #00bbff;
-  text-shadow: 0 0 5px #00bbff99;
-}
-
-.live-bar {
-  font-weight: 700;
-  color: #0099ff;
-  margin-bottom: 12px;
-  font-size: 15px;
-  letter-spacing: 1px;
-  text-shadow:
-    0 0 8px #0099ff,
-    0 0 15px #0099ff,
-    0 0 20px #0099ff;
-  animation: pulse 1.5s infinite alternate;
-}
-
-@keyframes pulse {
-  0% { text-shadow: 0 0 5px #0099ff, 0 0 15px #0099ff;}
-  100% { text-shadow: 0 0 15px #0099ff, 0 0 30px #0099ff;}
-}
-
-.play-btn {
-  background: #0099ff;
-  border: none;
-  border-radius: 50%;
-  width: 75px;
-  height: 75px;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 0 10px #0099ffaa;
-  transition: background 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.play-btn:hover {
-  background: #007acc;
-  box-shadow: 0 0 20px #007acccc;
-}
-
-.status {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #7ec8ff;
-  font-style: italic;
-  min-height: 20px;
-}
-
-.radio-icon {
-  font-size: 40px;
-  color: #0099ff;
-  margin-bottom: 10px;
-  text-shadow: 0 0 10px #0099ffbb;
-}
-
-
-    h1 {
-      font-family: 'Orbitron', monospace;
+    #playerContainer {
+      padding: 15px;
+      background-color: #e0ffe0;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
       text-align: center;
-      margin-bottom: 30px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: #ff3b3b;
-      text-shadow: 0 0 10px #ff3b3b;
-    }
-
-    #radioContainer {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      max-width: 1100px;
-      width: 100%;
-    }
-
-    .radio-card {
-      background: #2a0a0a;
-      border-radius: 20px;
-      padding: 25px 20px;
-      box-shadow: 0 0 20px #ff3b3b66;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .radio-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px #ff3b3bcc;
-      cursor: pointer;
     }
 
     .radio-name {
-      font-family: 'Orbitron', monospace;
-      font-weight: 700;
-      font-size: 20px;
-      margin-bottom: 12px;
-      letter-spacing: 1.5px;
-      color: #ff5a5a;
-      text-shadow: 0 0 5px #ff5a5a99;
-    }
-
-    .live-bar {
-      font-weight: 700;
-      color: #ff1212;
-      margin-bottom: 12px;
-      font-size: 15px;
-      letter-spacing: 1px;
-      text-shadow:
-        0 0 8px #ff1212,
-        0 0 15px #ff1212,
-        0 0 20px #ff1212;
-      animation: pulse 1.5s infinite alternate;
-    }
-
-    @keyframes pulse {
-      0% { text-shadow: 0 0 5px #ff1212, 0 0 15px #ff1212;}
-      100% { text-shadow: 0 0 15px #ff1212, 0 0 30px #ff1212;}
-    }
-
-    .play-btn {
-      background: #ff3b3b;
-      border: none;
-      border-radius: 50%;
-      width: 75px;
-      height: 75px;
-      font-size: 30px;
-      color: white;
       cursor: pointer;
-      box-shadow: 0 0 10px #ff3b3baa;
-      transition: background 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 12px;
+      margin: 5px 0;
+      background-color: #f4f4f4;
+      border-radius: 5px;
+      transition: background 0.3s;
     }
 
-    .play-btn:hover {
-      background: #ff1f1f;
-      box-shadow: 0 0 20px #ff1f1fcc;
+    .radio-name:hover {
+      background-color: #ddd;
     }
 
-    .status {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #ff8a8a;
-      font-style: italic;
-      min-height: 20px;
-    }
-
-    /* Optional: Icon radio */
-    .radio-icon {
-      font-size: 40px;
-      color: #ff3b3b;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px #ff3b3bbb;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 500px) {
-      .play-btn {
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-      }
-
-      .radio-name {
-        font-size: 18px;
-      }
-
-      .status {
-        font-size: 12px;
-      }
+    #radioContainer {
+      max-width: 500px;
+      margin: auto;
     }
   </style>
 </head>
 <body>
-  <h1>📻 RADIO STREAMING</h1>
-  <!-- Player tampil di atas -->
-<div id="playerContainer"></div>
 
-<!-- Daftar nama radio -->
-<div id="radioContainer"></div>
+  <div id="playerContainer"></div>
+  <div id="radioContainer"></div>
 
+  <script>
+    const radios = [
+      { name: "Mumpuni FM", url: "https://b.alhastream.com:5006/radio" },
+      { name: "Sip FM", url: "https://a3.alhastream.com:1275/sipfm" },
+      { name: "ELEGAN RADIO, TUBA BARAT", url: "https://a3.alhastream.com:1265/eleganradio" },
+      { name: "UTAMA FM, LAMPUNG TENGAH", url: "https://c1.alhastream.com:3230/suwarautamafm" },
+      { name: "DIVA RADIO, LAMPUNG TIMUR", url: "https://a3.alhastream.com:1285/divaradio" },
+      { name: "BRILIAN RADIO, BANDAR LAMPUNG", url: "https://b.alhastream.com:5009/radio" },
+      { name: "SLENDRO FM, BANDAR JAYA", url: "https://asv.alhastream.com:1290/slendrofm" },
+      { name: "Prambors FM", url: "https://s1.cloudmu.id/listen/prambors_makassar/radio.mp3" }
+    ];
 
-  <script src="player.js"></script>
+    const radioContainer = document.getElementById("radioContainer");
+    const playerContainer = document.getElementById("playerContainer");
+
+    let currentAudio = null;
+
+    radios.forEach((radio) => {
+      const nameDiv = document.createElement("div");
+      nameDiv.className = "radio-name";
+      nameDiv.textContent = radio.name;
+
+      nameDiv.addEventListener("click", () => {
+        if (currentAudio) {
+          currentAudio.pause();
+        }
+
+        // Reset player container
+        playerContainer.innerHTML = "";
+
+        const title = document.createElement("div");
+        title.textContent = `▶️ Sedang Memutar: ${radio.name}`;
+        title.style.fontWeight = "bold";
+        title.style.marginBottom = "10px";
+
+        const audio = new Audio(radio.url);
+        audio.controls = true;
+        audio.autoplay = true;
+
+        playerContainer.appendChild(title);
+        playerContainer.appendChild(audio);
+        playerContainer.style.display = "block";
+
+        currentAudio = audio;
+      });
+
+      radioContainer.appendChild(nameDiv);
+    });
+  </script>
+
 </body>
 </html>
