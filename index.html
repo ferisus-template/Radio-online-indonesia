@@ -2,30 +2,25 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Radio Streaming Responsif</title>
+  <title>Radio Minimalis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 16px;
-      background-color: #f9f9f9;
+      background-color: #f1f1f1;
     }
 
     #playerContainer {
       display: none;
-      background-color: #ffffff;
-      border-radius: 12px;
+      background: white;
       padding: 16px;
       margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
       text-align: center;
-      max-width: 100%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     #playerTitle {
@@ -34,130 +29,77 @@
       margin-bottom: 8px;
     }
 
-    .liveIndicator {
-      color: red;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-
     #playerControls {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 12px;
-      flex-wrap: wrap;
     }
 
     .playBtn {
       font-size: 1.3rem;
-      padding: 8px 20px;
+      padding: 10px 20px;
       border: none;
-      border-radius: 25px;
+      border-radius: 20px;
       background-color: #007bff;
       color: white;
       cursor: pointer;
-      transition: background-color 0.3s;
     }
 
-    .playBtn:hover {
-      background-color: #0056b3;
+    .radio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
     }
 
-    .radio-name {
+    .radio-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
       background-color: white;
-      padding: 12px;
-      margin: 8px auto;
-      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       cursor: pointer;
-      transition: background 0.3s;
-      max-width: 600px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      font-size: 1rem;
-      text-align: center;
+      transition: transform 0.2s;
     }
 
-    .radio-name:hover {
-      background-color: #f0f0f0;
+    .radio-icon:hover {
+      transform: scale(1.05);
+    }
+
+    .radio-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     @media (max-width: 600px) {
+      .radio-icon {
+        width: 60px;
+        height: 60px;
+      }
       .playBtn {
         width: 100%;
-        font-size: 1rem;
-        padding: 10px;
-      }
-
-      #playerTitle {
-        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Player Container -->
+  <!-- Player -->
   <div id="playerContainer">
-    <div id="playerTitle">🎧 Sedang Memutar</div>
-    <div class="liveIndicator" id="liveStatus">🔴 LIVE</div>
+    <div id="playerTitle">🎧 Memutar Radio</div>
+    <div class="liveIndicator">🔴 LIVE</div>
     <div id="playerControls">
       <button class="playBtn" id="playButton">⏸️</button>
     </div>
   </div>
 
-  <!-- Daftar Radio -->
-  <div id="radioContainer"></div>
+  <!-- Radio Grid -->
+  <div class="radio-grid" id="radioContainer"></div>
 
-  <script>
-    const radios = [
-      { name: "Mumpuni FM", url: "https://b.alhastream.com:5006/radio" },
-      { name: "Sip FM", url: "https://a3.alhastream.com:1275/sipfm" },
-      { name: "ELEGAN RADIO, TUBA BARAT", url: "https://a3.alhastream.com:1265/eleganradio" },
-      { name: "UTAMA FM, LAMPUNG TENGAH", url: "https://c1.alhastream.com:3230/suwarautamafm" },
-      { name: "DIVA RADIO, LAMPUNG TIMUR", url: "https://a3.alhastream.com:1285/divaradio" },
-      { name: "BRILIAN RADIO, BANDAR LAMPUNG", url: "https://b.alhastream.com:5009/radio" },
-      { name: "SLENDRO FM, BANDAR JAYA", url: "https://asv.alhastream.com:1290/slendrofm" },
-      { name: "Prambors FM", url: "https://s1.cloudmu.id/listen/prambors_makassar/radio.mp3" }
-    ];
-
-    const radioContainer = document.getElementById("radioContainer");
-    const playerContainer = document.getElementById("playerContainer");
-    const playerTitle = document.getElementById("playerTitle");
-    const playButton = document.getElementById("playButton");
-
-    let currentAudio = new Audio();
-    let isPlaying = false;
-
-    radios.forEach((radio) => {
-      const nameDiv = document.createElement("div");
-      nameDiv.className = "radio-name";
-      nameDiv.textContent = radio.name;
-
-      nameDiv.addEventListener("click", () => {
-        currentAudio.pause();
-        currentAudio = new Audio(radio.url);
-        currentAudio.play();
-
-        isPlaying = true;
-        playerTitle.textContent = `🎧 Sedang Memutar: ${radio.name}`;
-        playButton.textContent = "⏸️";
-        playerContainer.style.display = "block";
-      });
-
-      radioContainer.appendChild(nameDiv);
-    });
-
-    playButton.addEventListener("click", () => {
-      if (isPlaying) {
-        currentAudio.pause();
-        playButton.textContent = "▶️";
-        isPlaying = false;
-      } else {
-        currentAudio.play();
-        playButton.textContent = "⏸️";
-        isPlaying = true;
-      }
-    });
-  </script>
+<script src="script.js"></script>
 
 </body>
 </html>
