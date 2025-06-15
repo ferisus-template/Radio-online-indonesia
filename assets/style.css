@@ -1,0 +1,157 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+.full-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; penuh layar */
+  text-align: center;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #2c3e50, #4ca1af);
+  color: white;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar-brand {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.navbar-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-links li a:hover {
+  color: #ffd700;
+}
+
+/* Responsive: max width 768px */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+}
+
+main {
+  padding: 2rem;
+}
+/* RADIO CSS */
+.radio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.radio-icon {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.radio-icon img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.radio-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* player RAdio css */
+#playerContainer {
+  background: #1e1e2f;
+  color: white;
+  padding: 16px 20px;
+  margin-top: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#playerTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #00eaff;
+}
+
+#playButton {
+  background: #00eaff;
+  border: none;
+  color: #1e1e2f;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#playButton:hover {
+  background: #00bcd4;
+  transform: scale(1.05);
+}
+
+/* footer css */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
