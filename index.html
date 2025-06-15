@@ -1,40 +1,91 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <title>Radio Streaming</title>
+  <meta charset="UTF-8">
+  <title>Radio Player</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
   <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f6f6f6;
+    }
+
     #playerContainer {
-      padding: 15px;
-      background-color: #e0ffe0;
-      border-radius: 8px;
-      margin-bottom: 20px;
       display: none;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
       text-align: center;
     }
 
-    .radio-name {
+    #playerTitle {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #playerControls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .playBtn {
+      font-size: 24px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      background-color: #007bff;
+      color: white;
       cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .playBtn:hover {
+      background-color: #0056b3;
+    }
+
+    .liveIndicator {
+      color: red;
+      font-weight: bold;
+    }
+
+    .radio-name {
+      background-color: white;
       padding: 12px;
-      margin: 5px 0;
-      background-color: #f4f4f4;
-      border-radius: 5px;
-      transition: background 0.3s;
+      margin: 8px auto;
+      border-radius: 10px;
+      max-width: 600px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
 
     .radio-name:hover {
-      background-color: #ddd;
-    }
-
-    #radioContainer {
-      max-width: 500px;
-      margin: auto;
+      background-color: #eeeeee;
     }
   </style>
 </head>
 <body>
 
-  <div id="playerContainer"></div>
+  <!-- Modern Player UI -->
+  <div id="playerContainer">
+    <div id="playerTitle">🎧 Sedang Memutar</div>
+    <div class="liveIndicator" id="liveStatus">🔴 LIVE</div>
+    <div id="playerControls">
+      <button class="playBtn" id="playButton">⏸️</button>
+    </div>
+  </div>
+
+  <!-- Radio List -->
   <div id="radioContainer"></div>
 
   <script>
@@ -51,8 +102,11 @@
 
     const radioContainer = document.getElementById("radioContainer");
     const playerContainer = document.getElementById("playerContainer");
+    const playerTitle = document.getElementById("playerTitle");
+    const playButton = document.getElementById("playButton");
 
-    let currentAudio = null;
+    let currentAudio = new Audio();
+    let isPlaying = false;
 
     radios.forEach((radio) => {
       const nameDiv = document.createElement("div");
@@ -60,30 +114,29 @@
       nameDiv.textContent = radio.name;
 
       nameDiv.addEventListener("click", () => {
-        if (currentAudio) {
-          currentAudio.pause();
-        }
+        currentAudio.pause();
+        currentAudio = new Audio(radio.url);
+        currentAudio.play();
 
-        // Reset player container
-        playerContainer.innerHTML = "";
-
-        const title = document.createElement("div");
-        title.textContent = `▶️ Sedang Memutar: ${radio.name}`;
-        title.style.fontWeight = "bold";
-        title.style.marginBottom = "10px";
-
-        const audio = new Audio(radio.url);
-        audio.controls = true;
-        audio.autoplay = true;
-
-        playerContainer.appendChild(title);
-        playerContainer.appendChild(audio);
+        isPlaying = true;
+        playerTitle.textContent = `🎧 Sedang Memutar: ${radio.name}`;
+        playButton.textContent = "⏸️";
         playerContainer.style.display = "block";
-
-        currentAudio = audio;
       });
 
       radioContainer.appendChild(nameDiv);
+    });
+
+    playButton.addEventListener("click", () => {
+      if (isPlaying) {
+        currentAudio.pause();
+        playButton.textContent = "▶️";
+        isPlaying = false;
+      } else {
+        currentAudio.play();
+        playButton.textContent = "⏸️";
+        isPlaying = true;
+      }
     });
   </script>
 
