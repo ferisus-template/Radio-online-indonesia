@@ -42,6 +42,8 @@ radios.forEach((radio) => {
     playerTitle.textContent = `🎧 Memutar: ${radio.name}`;
     playButton.textContent = "⏸️";
     playerContainer.style.display = "block";
+    document.title = `🎵 Sedang memutar: ${radio.name}`;
+
   });
 
   radioContainer.appendChild(iconDiv);
