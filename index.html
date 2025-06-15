@@ -1,105 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Radio Minimalis</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 16px;
-      background-color: #f1f1f1;
-    }
+  <meta charset="UTF-8" />
+  <title>My JS Framework</title>
 
-    #playerContainer {
-      display: none;
-      background: white;
-      padding: 16px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    #playerTitle {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    #playerControls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .playBtn {
-      font-size: 1.3rem;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-
-    .radio-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .radio-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .radio-icon:hover {
-      transform: scale(1.05);
-    }
-
-    .radio-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    @media (max-width: 600px) {
-      .radio-icon {
-        width: 60px;
-        height: 60px;
-      }
-      .playBtn {
-        width: 100%;
-      }
-    }
-  </style>
+  <!-- Tambahkan link ke CSS -->
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
+  <div id="navbar"></div>
+  <div id="app"></div>
+  <div id="footer"></div>
 
-  <!-- Player -->
-  <div id="playerContainer">
-    <div id="playerTitle">🎧 Memutar Radio</div>
-    <div class="liveIndicator">🔴 LIVE</div>
-    <div id="playerControls">
-      <button class="playBtn" id="playButton">⏸️</button>
-    </div>
-  </div>
-
-  <!-- Radio Grid -->
-  <div class="radio-grid" id="radioContainer"></div>
-
-<script src="radio.js"></script>
-
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
