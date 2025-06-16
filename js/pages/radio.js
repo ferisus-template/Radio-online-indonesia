@@ -52,16 +52,33 @@ function setupPlayer() {
     iconDiv.appendChild(img);
 
     iconDiv.addEventListener("click", () => {
-      if (currentAudio) currentAudio.pause();
-      currentAudio = new Audio(radio.url);
-      currentAudio.play();
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.src = ""; // penting untuk menghentikan total
+    currentAudio.load();   // reset state audio
+  }
 
-      isPlaying = true;
-      playerTitle.textContent = `🎧 Memutar: ${radio.name}`;
-      playButton.textContent = "⏸️";
-      playerContainer.style.display = "block";
-      document.title = `🎵 ${radio.name}`;
+  currentAudio = new Audio(radio.url);
+
+  currentAudio.addEventListener("canplay", () => {
+    currentAudio.play().catch(err => {
+      console.error("Gagal memutar radio:", err);
     });
+
+    isPlaying = true;
+    playerTitle.textContent = `🎧 Memutar: ${radio.name}`;
+    playButton.textContent = "⏸️";
+    playerContainer.style.display = "block";
+    document.title = `🎵 ${radio.name}`;
+  });
+
+  currentAudio.addEventListener("error", () => {
+    console.error("Gagal memuat stream:", radio.url);
+    playerTitle.textContent = `🚫 Gagal memuat: ${radio.name}`;
+    playerContainer.style.display = "block";
+  });
+});
+
 
     radioContainer.appendChild(iconDiv);
   });
