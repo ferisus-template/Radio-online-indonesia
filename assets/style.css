@@ -61,6 +61,49 @@ body {
 }
 
 /* Responsive: max width 768px */
+
+/* Ukuran medium: Tablet */
+@media (max-width: 992px) {
+  .radio-icon img {
+    width: 80px;
+    height: 80px;
+  }
+
+  #playerContainer {
+    max-width: 90%;
+    padding: 12px;
+  }
+}
+
+/* Ukuran kecil: HP */
+@media (max-width: 576px) {
+  .radio-icon img {
+    width: 60px;
+    height: 60px;
+  }
+
+  #playerTitle {
+    font-size: 0.9rem;
+  }
+
+  #playButton {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .radio-grid {
+    gap: 12px;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar-toggle {
     display: block;
