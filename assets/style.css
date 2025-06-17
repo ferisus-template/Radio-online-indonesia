@@ -75,10 +75,15 @@ body {
 }
 
 /* Hanya aktif saat max-width 768px */
+
 @media (min-width: 769px) {
-  .navbar-links-popup {
-    display: none !important;
-  }
+  .navbar-links-popup {
+    display: none !important;
+  }
+
+  .navbar-links {
+    display: flex !important;
+  }
 }
 
 .navbar {
