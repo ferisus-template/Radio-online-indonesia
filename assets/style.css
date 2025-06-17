@@ -161,7 +161,7 @@ body {
   }
 }
 
-/* Mobile (popup) */
+/* Mobile (popup) *
 @media (max-width: 768px) {
   .navbar-links {
     display: none;
@@ -186,7 +186,7 @@ body {
     color: #333;
   }
 }
-
+*/
 
 
 .navbar-toggle {
