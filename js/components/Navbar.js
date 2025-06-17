@@ -9,6 +9,12 @@ export function Navbar() {
           <li><a href="#radio">Radio</a></li>
           <li><a href="#about">About</a></li>
         </ul>
+        <input 
+          type="text" 
+          id="radioSearchInput" 
+          placeholder="🔍 Cari radio..." 
+          class="radio-search"
+        />
       </div>
     </nav>
   `;
