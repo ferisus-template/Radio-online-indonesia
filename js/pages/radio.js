@@ -54,30 +54,52 @@ function setupPlayer() {
     iconDiv.addEventListener("click", () => {
   if (currentAudio) {
     currentAudio.pause();
-    currentAudio.src = ""; // penting untuk menghentikan total
-    currentAudio.load();   // reset state audio
+    currentAudio.src = "";
+    currentAudio.load();
   }
 
   currentAudio = new Audio(radio.url);
+  let hasPlayed = false;
 
   currentAudio.addEventListener("canplay", () => {
-    currentAudio.play().catch(err => {
-      console.error("Gagal memutar radio:", err);
-    });
+    currentAudio.play().then(() => {
+      isPlaying = true;
+      hasPlayed = true;
 
-    isPlaying = true;
-    playerTitle.textContent = `🎧 Memutar: ${radio.name}`;
-    playButton.textContent = "⏸️";
-    playerContainer.style.display = "block";
-    document.title = `🎵 ${radio.name}`;
+      playerTitle.textContent = `🎧 Sedang memutar: ${radio.name}`;
+      playButton.textContent = "⏸️";
+      playerContainer.style.display = "block";
+      document.title = `🎵 ${radio.name}`;
+    }).catch(err => {
+      console.warn("⚠️ Gagal memutar radio (kemungkinan autoplay diblokir):", err);
+      playerTitle.textContent = `🔇 ${radio.name} sedang offline`;
+      playButton.textContent = "▶️";
+      playerContainer.style.display = "block";
+      isPlaying = false;
+    });
   });
 
   currentAudio.addEventListener("error", () => {
-    console.error("Gagal memuat stream:", radio.url);
-    playerTitle.textContent = `🚫 Gagal memuat: ${radio.name}`;
+    console.warn("🔇 Stream error:", radio.url);
+    playerTitle.textContent = `🔇 ${radio.name} sedang offline`;
+    playButton.textContent = "▶️";
     playerContainer.style.display = "block";
+    isPlaying = false;
+    hasPlayed = false;
   });
+
+  // Timeout 5 detik kalau tidak responsif
+  setTimeout(() => {
+    if (!hasPlayed) {
+      currentAudio.pause();
+      playerTitle.textContent = `🔇 ${radio.name} tidak merespon`;
+      playerContainer.style.display = "block";
+      playButton.textContent = "▶️";
+      isPlaying = false;
+    }
+  }, 5000);
 });
+
 
 
     radioContainer.appendChild(iconDiv);
