@@ -145,7 +145,7 @@ body {
   gap: 15px;
 }
 
-/* Desktop */
+/* Desktop *
 @media (min-width: 769px) {
   .navbar-links {
     display: flex !important;
