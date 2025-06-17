@@ -76,15 +76,6 @@ body {
 
 /* Hanya aktif saat max-width 768px */
 
-@media (min-width: 769px) {
-  .navbar-links-popup {
-    display: none !important;
-  }
-
-  .navbar-links {
-    display: flex !important;
-  }
-}
 
 .navbar {
   background: linear-gradient(90deg, #2c3e50, #4ca1af);
@@ -108,6 +99,56 @@ body {
   font-weight: bold;
 }
 
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .navbar-links {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .navbar-links li a {
+    color: white;
+  }
+}
+
+/* Mobile (popup) */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 150px;
+    z-index: 1000;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-links li a {
+    color: #333;
+  }
+}
+
+
+/*
 .navbar-toggle {
   display: none;
   font-size: 1.5rem;
@@ -132,7 +173,7 @@ body {
 
 .navbar-links li a:hover {
   color: #ffd700;
-}
+}*/
 
 /* Responsive: max width 768px */
 
@@ -178,23 +219,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  .navbar-toggle {
-    display: block;
-  }
 
-  .navbar-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 10px;
-    gap: 10px;
-  }
-
-  .navbar-links.active {
-    display: flex;
-  }
-}
 
 main {
   padding: 2rem;
@@ -271,4 +296,4 @@ footer {
   color: white;
   text-align: center;
   padding: 1rem;
-}
+  }
