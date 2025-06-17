@@ -37,6 +37,17 @@ body {
   transition: background 0.3s;
 }
 
+.navbar-links li {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.navbar-links li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .navbar-links-popup a:hover {
   background: #f0f0f0;
 }
