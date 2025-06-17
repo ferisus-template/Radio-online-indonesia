@@ -29,7 +29,7 @@ body {
   }
 }
 
-/* Tambahan untuk gaya popup toggle */
+/* Tambahan untuk gaya popup toggle 
 .navbar-links-popup {
   list-style: none;
   position: absolute;
@@ -72,7 +72,47 @@ body {
 
 .navbar-links-popup.active {
   display: flex;
+}*/
+/* Tambahan untuk gaya popup toggle */
+.navbar-links-popup {
+  position: absolute;
+  top: 60px; /* tergantung tinggi navbar */
+  right: 20px;
+  background: #ffffff;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  min-width: 150px;
+  z-index: 1000;
 }
+
+.navbar-links-popup a {
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.navbar-links-popup a:hover {
+  background: #f0f0f0;
+}
+
+.navbar-links-popup.active {
+  display: flex;
+}
+
+/* Hanya aktif saat max-width 768px */
+@media (min-width: 769px) {
+  .navbar-links-popup {
+    display: none !important;
+  }
+}
+
 
 /* Hanya aktif saat max-width 768px */
 
