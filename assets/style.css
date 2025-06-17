@@ -11,6 +11,24 @@ body {
   /* height: 100vh; penuh layar */
   text-align: center;
 }
+/* input radio */
+.radio-search {
+  padding: 6px 12px;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  margin-left: 10px;
+  flex: 1;
+  max-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .radio-search {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
 /* Tambahan untuk gaya popup toggle */
 .navbar-links-popup {
   list-style: none;
