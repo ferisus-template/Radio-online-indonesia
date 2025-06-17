@@ -13,6 +13,7 @@ body {
 }
 /* Tambahan untuk gaya popup toggle */
 .navbar-links-popup {
+  list-style: none;
   position: absolute;
   top: 60px; /* tergantung tinggi navbar */
   right: 20px;
