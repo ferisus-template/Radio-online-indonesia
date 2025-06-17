@@ -5,7 +5,7 @@ let currentAudio = null;
 let isPlaying = false;
 
 export function Radio() {
-  setTitle("Radio Player - MyFramework");
+  setTitle("Daftar Radio Fm");
 
   // Kembalikan HTML string
   const html = `
