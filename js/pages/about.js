@@ -1,3 +1,7 @@
-export function About() {
-  return `<h1>Tentang</h1><p>Dibuat dengan cinta menggunakan JS murni.</p>`;
+import { h } from "../../app/app.js";
+export function AboutPage() {
+  return h("div", {}, 
+    h("h1", {}, "halaman about"),
+    h("p", {}, "Aplikasi ini dibuat menggunakan Virtual DOM buatan sendiri.")
+  );
 }
