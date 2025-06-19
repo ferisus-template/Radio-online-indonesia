@@ -1,7 +1,6 @@
 import { h } from "./app.js";
 import { globalAudio } from "./audio.js";
 
-// Modular icon class
 const ICON_PLAY = "fas fa-play fa-2x";
 const ICON_PAUSE = "fas fa-pause fa-2x";
 
